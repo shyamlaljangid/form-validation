@@ -23,8 +23,13 @@
     td{
         border: 1px solid ;
     }
+    .gender{
+         
+        padding: 5px;
+        
 
-    </style>
+    }
+        </style>
 </head>
 <body>
     <div id="wrapper">
@@ -96,7 +101,7 @@
          
 
           let data = {};
-           data. Sno = ''
+           data.Sno = '';
           data.name = document.querySelector("#name").value
           data.age = document.querySelector("#age").value
           data.number= document.querySelector("#number").value
@@ -113,7 +118,27 @@
                 app.innerHTML = data[i]
              }
            
-             
+
+
+            let  count = table.children[0].children.length;
+             let rowcount = document.querySelector("tr")
+
+            for (let i in data){
+                if(i === "Sno"){
+                    let td1 = document.createElement("td")
+                    rowcount.appendChild(td1)
+                       td1.innerHTML = count
+                      
+                }
+                else{
+                    let td1 = document.createElement("td")
+                    rowcount.appendChild(td1)
+                       td1.innerHTML = data[i]
+                      
+                }
+            }
+
+
 
         
 

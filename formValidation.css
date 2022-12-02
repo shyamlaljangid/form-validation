@@ -26,6 +26,11 @@ select{
     
 
 }
+.gender{
+    padding: 5px;
+
+    font-size: 25px;
+}
 .err{
     color: red;
 }
