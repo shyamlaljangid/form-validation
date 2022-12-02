@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.formValidation.in</title>
+    <link rel="stylesheet" href="formValidation.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="form">
+            <form action="">
+                <input type="text" id="name" placeholder="Enter your name"><span class="err"></span><br>
+                <input type="text" id="age" placeholder="Enter your age"><span class="err"></span> <br>
+                <input type="text" id="number" placeholder="Enter your number"><span class="err"></span> <br>
+                <input type="text" id="email" placeholder="Enter your email"><span class="err"></span> <br>
+
+                <input type="radio" name="gender" class="gender" id="men">men
+                <input type="radio" name="gender" class="gender" id="women">women
+                <input type="radio" name="gender" class="gender" id="other">other
+                <span class="err"></span><br>
+
+                <select name="" id="hometown">
+                    <option value="" selected disabled> Enter your hometown</option>
+                    <option value="jaipur">jaipur</option>
+                    <option value="jodhapur">jodhapur</option>
+                    <option value="kota">kota</option>
+                    <option value="ajmer">ajmer</option>
+                    <option value="bikaner">bikaner</option>
+                    <option value="pali">pali</option>
+
+                </select><br>
+
+                <input type="submit" value="submit">
+
+            </form>
+        </div>
+    </div>
+    <script>
+        let form = document.querySelector("form")
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            let name = document.querySelector("#name")
+            let age = document.querySelector("#age")
+            let number = document.querySelector("#number")
+            let email = document.querySelector("#email")
+            let gender = document.querySelectorAll(".gender")
+            let Hometown = document.querySelector("#hometown")
+
+
+
+            let nameErr = /^[a-zA-Z ]{3,25}$/
+            let ageErr = /^[0-9]{2}$/
+            let numberErr = /^[0-9]{10}$/
+            let emailErr = /^[a-zA-Z0-9\.\_]+\@[a-zA-Z]+\.[a-zA-Z]{2,5}$/
+
+            if (match1(name, nameErr, "enter your name value.length (3-25)")) {
+                if (match1(age, ageErr, "enter your age between {10-99}")) {
+                    if (match1(number, numberErr, "enter your number")) {
+                        if (match1(email, emailErr, "enter your email ")) {
+                            if (match2(gender, "select gender")){
+                                if (match3(Hometown, " select home town")) {
+                                    form.submit();
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+            return false;
+        }
+        function match1(ele, err, mas) {
+            if (ele.value.match(err)) {
+
+                ele.nextElementSibling.innerHTML = '';
+                ele.classList.remove("texterr");
+                return true;
+            }
+            else {
+                ele.nextElementSibling.innerHTML = mas;
+                ele.classList.add("texterr")
+                ele.focus();
+                return false;
+            }
+        }
+            function match2(ele, mas){
+                let count =0
+                for(let i=0; i<ele.length; i++){
+                    if(ele[i].value.checked){
+                         count= 1;
+                    }
+                }
+                if( count === 0){
+                    Array.from(ele)[ele.length - 1].nextElementSibling.innerHTML = mas;
+                    return false;
+                }
+                else{
+                    Array.from(ele)[ele.length - 1].nextElementSibling.innerHTML = "";
+                    return true;
+                }
+            }
+
+
+        
+        function match3(ele, mag) {
+            if (ele.value.length === 0) {
+                ele.nextElementSibling.innerHTML = mag
+                ele.classList.add("texterr")
+                return false;
+            }
+            else {
+                ele.nextElementSibling.innerHTML = mag
+                ele.classList.remove("texterr")
+                return true;
+            }
+        }
+    </script>
+</body>
+
+</html>

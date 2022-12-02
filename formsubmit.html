@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form submit and edit deital</title>
+
+
+    <style>
+    input{
+        padding: 5px;
+        border-radius: 10px;
+        margin: 5px;}
+
+    table{
+        border: 1px solid ;
+    }
+    table tr th{
+        border: 1px solid;
+        padding: 5px 20px;
+    }
+    td{
+        border: 1px solid ;
+    }
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="form">
+            <form action="">
+                <input type="text" id="name" placeholder="Enter your name"><span class="err"></span><br>  
+                <input type="text" id="age" placeholder="Enter your age"><span class="err"></span> <br> 
+                <input type="text" id="number" placeholder="Enter your number"><span class="err"></span> <br> 
+                <input type="text" id="email" placeholder="Enter your email"><span class="err"></span> <br> 
+
+                <input  class="gender" type="radio" name="gender" value="men">men
+                <input  class="gender" type="radio" name="gender" value="women">women
+                <input  class="gender" type="radio" name="gender" value ="other">other
+                <span class="err"></span><br>
+                
+                <select name="" id="hometown">
+                    <option value="" selected disabled> Enter your hometown</option>
+                    <option value="jaipur" >jaipur</option>
+                    <option value="jodhapur" >jodhapur</option>
+                    <option value="kota" >kota</option>
+                    <option value="ajmer" >ajmer</option>
+                    <option value="bikaner" >bikaner</option>
+                    <option value="pali">pali</option>
+                  
+                </select><br>
+
+                 <input type="submit" value="submit">
+
+            </form>
+
+
+            <table >
+               <tr>
+                <th>sno</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Number</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Hometown</th>
+                <th>Edit</th>
+               </tr>
+             
+            </table>
+        </div>
+    </div>
+    <script>
+        let form = document.querySelector("form")
+
+        let name = document.querySelector("#name")
+        let age = document.querySelector("#age")
+        let number = document.querySelector("#number")
+        let email = document.querySelector("#email")
+        
+        let hometown = document.querySelector("#hometown")
+        let table =document.querySelector("table")
+        let gender = document.querySelectorAll(".gender")
+        
+          form.onsubmit = (e)=>{
+            e.preventDefault()
+    
+        
+              let lastgender= "";
+             for(let i=0; i<gender.length; i++){
+                if(gender[i].checked === true){
+                    lastgender = gender[i].value
+                }
+            }
+         
+
+          let data = {};
+           data. Sno = ''
+          data.name = document.querySelector("#name").value
+          data.age = document.querySelector("#age").value
+          data.number= document.querySelector("#number").value
+          data.email = document.querySelector("#email").value
+          data.gender = lastgender
+          data.hometown = document.querySelector("#hometown").value
+
+     
+            let tr =document.createElement("tr")
+             let add = table.insertAdjacentElement("beforeend",tr)
+             for (let i in data){
+                let td = document.createElement("td")
+                let app = add.appendChild(td)
+                app.innerHTML = data[i]
+             }
+           
+             
+
+        
+
+        //    let tr = document.createElement("tr")
+        //    let td = document.createElement("td")
+        //     let add = table.insertAdjacentElement("beforeend",tr)
+        //       let app = add.appendChild(td)
+        //       app.innerHTML = name.value
+
+        //       let td1 = document.createElement("td")
+        //       let add1 = table.insertAdjacentElement("beforeend",tr)
+        //       let app1 = add1.appendChild(td1)
+        //       app1.innerHTML = age.value
+
+        //       let td2 = document.createElement("td")
+        //       let add2 = table.insertAdjacentElement("beforeend",tr)
+        //       let app2 = add2.appendChild(td2)
+        //       app2.innerHTML = number.value
+          
+        //     //   let td3 = document.createElement("td")
+        //     //   let add3 = table.insertAdjacentElement("beforeend",tr) 
+        //     //   let app3 = add3.appendChild(td3)
+        //     //   app3.innerHTML = age.value
+        //       let td4 = document.createElement("td")
+        //       let add4 = table.insertAdjacentElement("beforeend",tr)
+        //       let app4 = add4.appendChild(td4)
+        //       app4.innerHTML = email.value
+        //       for(let i = 0 ; i<radio.length; i++){
+               
+        //            if(radio[i].checked === true){
+        //             let td6 =document.createElement("td")
+        //                 let add6= table.insertAdjacentElement("beforeend",tr)
+        //                 let app6 = add6.appendChild(td6)
+        //                     app6.innerHTML = radio[i].value
+        //            }
+        //            else{
+
+        //            }
+        
+        //       }
+        //       let td5 = document.createElement("td")
+        //       let add5= table.insertAdjacentElement("beforeend",tr)
+        //       let app5 = add4.appendChild(td5)
+        //       app5.innerHTML = hometown.value
+            
+            
+            
+            
+            }
+
+
+           
+            
+               
+           
+    
+
+        //    document.querySelector("t").insertAdjacentElement("afterend" , tr) 
+           
+        
+          
+        
+
+        
+        //   }
+
+        
+
+    </script>
+</body>
+</html>
